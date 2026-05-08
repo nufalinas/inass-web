@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Naufal Inas Dzaki — Pengalaman</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── EXPERIENCE GRID ── */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .exp-card {
+      background: var(--card);
+      padding: 2.4rem 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.45s ease;
+    }
+
+    .exp-card:hover { background: var(--card-hover); }
+    .exp-card:hover::before { height: 100%; }
+
+    .exp-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .exp-icon {
+      font-size: 2.6rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .exp-category {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.75rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.9rem;
+      line-height: 1;
+    }
+
+    .exp-desc {
+      color: var(--muted);
+      font-size: 0.87rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .exp-lessons {
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+      margin-top: auto;
+    }
+
+    .exp-lessons-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-lessons ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .exp-lessons li {
+      font-size: 0.82rem;
+      color: var(--muted-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .exp-lessons li::before {
+      content: '—';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 3rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 0.35rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--bg);
+      transition: background 0.3s;
+    }
+
+    .timeline-item:hover .timeline-dot { background: var(--accent); }
+
+    .timeline-date {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    @media (max-width: 768px) {
+      .exp-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NID</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="pengalaman.html" class="active">Pengalaman</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg">EXPERIENCE</div>
+    <div class="page-hero-label">✦ Riwayat Kegiatan</div>
+    <h1 class="page-hero-title">Pengalaman<br>Saya</h1>
+    <p class="page-hero-sub">
+      Kumpulan turnamen, kreasi, dan organisasi yang membentuk siapa saya hari ini.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE CARDS -->
+  <section>
+    <div class="section-label">Semua Pengalaman</div>
+    <h2 class="section-title">Apa yang Pernah<br>Saya Lakukan</h2>
+
+    <div class="exp-grid">
+
+      <div class="exp-card reveal">
+        <div class="exp-number">01 / 05</div>
+        <span class="exp-icon">⚽</span>
+        <div class="exp-category">Olahraga · Turnamen</div>
+        <div class="exp-title">Turnamen Futsal</div>
+        <p class="exp-desc">
+          Berpartisipasi dalam turnamen futsal yang mengadu ketangkasan, kecepatan,
+          dan strategi antar tim. Pengalaman bermain di lapangan melatih refleks
+          dan komunikasi antar pemain secara nyata.
+        </p>
+        <div class="exp-lessons">
+          <div class="exp-lessons-label">Yang Dipelajari</div>
+          <ul>
+            <li>Kerja sama tim yang solid di bawah tekanan</li>
+            <li>Strategi permainan dan adaptasi taktik</li>
+            <li>Ketahanan fisik dan mental kompetitif</li>
+          </ul>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <span class="badge">Kompetisi Tim</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-number">02 / 05</div>
+        <span class="exp-icon">🎮</span>
+        <div class="exp-category">Esports · Turnamen</div>
+        <div class="exp-title">Turnamen Mobile Legends</div>
+        <p class="exp-desc">
+          Mengikuti turnamen Mobile Legends Bang Bang yang mempertemukan tim-tim
+          terbaik. Kompetisi ini mengasah kemampuan berpikir strategis dan
+          koordinasi real-time bersama rekan setim.
+        </p>
+        <div class="exp-lessons">
+          <div class="exp-lessons-label">Yang Dipelajari</div>
+          <ul>
+            <li>Pengambilan keputusan cepat dan tepat</li>
+            <li>Koordinasi komunikasi real-time</li>
+            <li>Analisis kekuatan & kelemahan lawan</li>
+          </ul>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <span class="badge">Esports</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-number">03 / 05</div>
+        <span class="exp-icon">🏐</span>
+        <div class="exp-category">Olahraga Tradisional · Turnamen</div>
+        <div class="exp-title">Turnamen Sepak Takraw</div>
+        <p class="exp-desc">
+          Berpartisipasi dalam turnamen sepak takraw — olahraga akrobatik yang
+          memadukan kelenturan, kekuatan, dan presisi. Salah satu pengalaman
+          olahraga paling unik dan menantang.
+        </p>
+        <div class="exp-lessons">
+          <div class="exp-lessons-label">Yang Dipelajari</div>
+          <ul>
+            <li>Fleksibilitas dan kontrol tubuh tinggi</li>
+            <li>Konsentrasi penuh saat eksekusi teknik</li>
+            <li>Sinergi dan kepercayaan antar pemain</li>
+          </ul>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <span class="badge">Olahraga Tradisional</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-number">04 / 05</div>
+        <span class="exp-icon">💻</span>
+        <div class="exp-category">Teknologi · Kreasi Digital</div>
+        <div class="exp-title">Membuat Game di Alice</div>
+        <p class="exp-desc">
+          Menciptakan sebuah game menggunakan software Alice — platform pemrograman
+          visual 3D berbasis Java. Proyek ini menjadi pintu masuk saya ke dunia
+          game development dan computational thinking.
+        </p>
+        <div class="exp-lessons">
+          <div class="exp-lessons-label">Yang Dipelajari</div>
+          <ul>
+            <li>Logika pemrograman dan alur algoritma</li>
+            <li>Desain dunia 3D dan animasi karakter</li>
+            <li>Problem solving dalam pengembangan game</li>
+          </ul>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <span class="badge">Game Development</span>
+          <span class="badge" style="margin-left:0.5rem;">Alice 3D</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-number">05 / 05</div>
+        <span class="exp-icon">🏸</span>
+        <div class="exp-category">Organisasi · SMA</div>
+        <div class="exp-title">Organisasi Badminton SMA</div>
+        <p class="exp-desc">
+          Aktif dalam organisasi ekstrakurikuler badminton di tingkat SMA —
+          terlibat dalam pengelolaan latihan, koordinasi anggota, serta
+          pengembangan program kegiatan olahraga di sekolah.
+        </p>
+        <div class="exp-lessons">
+          <div class="exp-lessons-label">Yang Dipelajari</div>
+          <ul>
+            <li>Kepemimpinan dan manajemen organisasi</li>
+            <li>Perencanaan program dan kegiatan</li>
+            <li>Komunikasi efektif lintas anggota</li>
+          </ul>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <span class="badge">Kepemimpinan</span>
+          <span class="badge" style="margin-left:0.5rem;">Organisasi</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TIMELINE -->
+  <section>
+    <div class="section-label">Kronologi</div>
+    <h2 class="section-title">Perjalanan<br>Saya</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">SMA — Aktif</div>
+        <div class="timeline-title">Organisasi Badminton SMA</div>
+        <p class="timeline-desc">Bergabung dan aktif berkontribusi dalam ekstrakurikuler badminton, membangun jiwa kepemimpinan dan manajemen kegiatan olahraga sekolah.</p>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Kegiatan Belajar</div>
+        <div class="timeline-title">Membuat Game di Alice</div>
+        <p class="timeline-desc">Merancang dan membangun game menggunakan platform Alice sebagai bagian dari eksplorasi teknologi dan pemrograman visual 3D.</p>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Kompetisi</div>
+        <div class="timeline-title">Turnamen Futsal</div>
+        <p class="timeline-desc">Berpartisipasi dalam turnamen futsal, membuktikan kemampuan bermain tim dan semangat kompetitif di lapangan.</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Kompetisi</div>
+        <div class="timeline-title">Turnamen Sepak Takraw</div>
+        <p class="timeline-desc">Mengikuti turnamen sepak takraw, mengasah kemampuan fisik dan teknik akrobatik yang membutuhkan latihan intensif.</p>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Esports</div>
+        <div class="timeline-title">Turnamen Mobile Legends</div>
+        <p class="timeline-desc">Berkompetisi di turnamen Mobile Legends, mengaplikasikan strategi dan koordinasi tim di arena esports.</p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Naufal Inas Dzaki</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="pengalaman.html">Pengalaman</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 · Naufal Inas Dzaki</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

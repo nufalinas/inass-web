@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Naufal Inas Dzaki — Beranda</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── HERO (index only) ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 9rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-word {
+      position: absolute;
+      top: 50%;
+      left: -1%;
+      transform: translateY(-52%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(9rem, 22vw, 24rem);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(212,240,74,0.06);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      animation: drift 14s ease-in-out infinite alternate;
+      letter-spacing: 0.01em;
+    }
+
+    @keyframes drift {
+      from { transform: translateY(-52%) translateX(0); }
+      to   { transform: translateY(-52%) translateX(-3%); }
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.8rem, 12vw, 10rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      margin-top: 2.2rem;
+      max-width: 500px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      animation: fadeUp 1.2s 0.6s ease both;
+    }
+
+    .scroll-line {
+      width: 44px;
+      height: 1px;
+      background: var(--muted);
+      animation: blink 2.2s ease-in-out infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 100%;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.82;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p strong { color: var(--text); }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      align-self: start;
+    }
+
+    .stat-box {
+      background: var(--card);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .stat-box:hover { background: var(--card-hover); }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.2rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.4rem;
+    }
+
+    /* ── QUICK NAV CARDS ── */
+    .quick-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .qnav-card {
+      background: var(--card);
+      padding: 2.5rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .qnav-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .qnav-card:hover { background: var(--card-hover); }
+    .qnav-card:hover::before { transform: scaleX(1); }
+
+    .qnav-icon {
+      font-size: 2.5rem;
+    }
+
+    .qnav-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+    }
+
+    .qnav-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .qnav-arrow {
+      margin-top: auto;
+      color: var(--accent);
+      font-size: 1.3rem;
+      transition: transform 0.3s;
+    }
+    .qnav-card:hover .qnav-arrow { transform: translateX(6px); }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(22px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 8rem 1.5rem 5rem; }
+      .hero-scroll-hint { left: 1.5rem; }
+      .about-strip { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
+      .quick-nav { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NID</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Beranda</a></li>
+    <li><a href="pengalaman.html">Pengalaman</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-word">NAUFAL</div>
+    <span class="hero-tag">✦ Portofolio Pribadi</span>
+   <div class="hero-profile">
+  <img src="foto.jpg" alt="Foto Naufal" class="hero-photo">
+</div>
+
+<h1 class="hero-name">
+  <em>Naufal Inas Dzaki</em>
+</h1>
+
+<p class="hero-desc">
+      Pelajar aktif dengan semangat kompetisi tinggi, jiwa organisasi kuat,
+      dan ketertarikan pada dunia teknologi serta olahraga.
+    </p>
+    <div class="hero-cta">
+      <a href="pengalaman.html" class="btn btn-primary">Lihat Pengalaman ↓</a>
+      <a href="kontak.html" class="btn btn-outline">Hubungi Saya</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-strip">
+    <div class="about-text reveal">
+      <div class="section-label">Tentang</div>
+      <h2 class="section-title" style="margin-bottom:1.5rem;">Siapa<br>Saya?</h2>
+      <p>
+        Halo! Saya <strong>Naufal Inas Dzaki</strong> — individu yang aktif dan
+        bersemangat dalam berbagai bidang, dari olahraga kompetitif hingga teknologi.
+      </p>
+      <p>
+        Pengalaman di berbagai turnamen mengajarkan saya nilai <strong>kerja tim,
+        disiplin, dan pantang menyerah</strong>. Sementara itu, pengalaman membuat
+        game di <strong>Alice</strong> membuktikan jiwa kreatif saya di bidang teknologi.
+      </p>
+      <div class="tags-wrap" style="margin-top:1.2rem;">
+        <span class="tag">⚽ Futsal</span>
+        <span class="tag">🏐 Takraw</span>
+        <span class="tag">🏸 Badminton</span>
+        <span class="tag">🎮 Esports</span>
+        <span class="tag">💻 Game Dev</span>
+      </div>
+    </div>
+    <div class="about-stats reveal reveal-delay-1">
+      <div class="stat-box">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Cabang Olahraga</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Turnamen</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Game Dibuat</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Organisasi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK NAV -->
+  <section>
+    <div class="section-label">Navigasi Cepat</div>
+    <h2 class="section-title">Jelajahi<br>Portofolio</h2>
+    <div class="quick-nav reveal">
+      <a href="pengalaman.html" class="qnav-card">
+        <div class="qnav-icon">🏆</div>
+        <div class="qnav-title">Pengalaman</div>
+        <p class="qnav-sub">Lihat semua turnamen, kegiatan, dan pencapaian yang pernah saya ikuti — dari lapangan futsal hingga layar game.</p>
+        <div class="qnav-arrow">→</div>
+      </a>
+      <a href="kontak.html" class="qnav-card">
+        <div class="qnav-icon">📬</div>
+        <div class="qnav-title">Kontak</div>
+        <p class="qnav-sub">Ingin berkolaborasi atau sekadar menyapa? Temukan cara terbaik untuk menghubungi saya di sini.</p>
+        <div class="qnav-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Naufal Inas Dzaki</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="pengalaman.html">Pengalaman</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 · Naufal Inas Dzaki</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

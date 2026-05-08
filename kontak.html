@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Naufal Inas Dzaki — Kontak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── BASE (inline fallback jika style.css tidak ada) ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --card: #141414;
+      --card-hover: #1a1a1a;
+      --border: #222;
+      --text: #e8e8e8;
+      --muted: #666;
+      --accent: #e8c96d;
+      --accent-dim: rgba(232, 201, 109, 0.12);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 3rem;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a { color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    /* ── PAGE WRAPPER ── */
+    .page { max-width: 1100px; margin: 0 auto; padding: 0 3rem 6rem; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      padding: 6rem 0 5rem;
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      top: -1rem;
+      right: -2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(6rem, 14vw, 12rem);
+      color: rgba(255,255,255,0.025);
+      letter-spacing: 0.05em;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .page-hero-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .page-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.75;
+    }
+
+    /* ── SECTION ── */
+    section { padding: 4rem 0; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── CONTACT GRID ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .contact-card {
+      background: var(--card);
+      padding: 2.5rem 2.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.4rem;
+      transition: background 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-card:hover { background: var(--card-hover); }
+
+    .contact-card:hover .contact-icon { transform: scale(1.1); }
+
+    .contact-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      margin-top: 0.1rem;
+    }
+
+    .contact-body { flex: 1; }
+
+    .contact-type {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .contact-arrow {
+      font-size: 1.1rem;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      align-self: center;
+    }
+
+    .contact-card:hover .contact-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    /* ── FORM SECTION ── */
+    .contact-form-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 3.5rem;
+    }
+
+    .form-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .form-header h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-header p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      padding: 0.85rem 1.1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+     
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #444;
+    }
+
+    .form-group textarea { min-height: 140px; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d0d0d;
+    }
+
+    .btn-primary:hover { background: #f0d47a; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--text); }
+
+    /* ── AVAILABILITY BAND ── */
+    .avail-band {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .avail-dot {
+      width: 10px;
+      height: 10px;
+      background: #4caf6e;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(76,175,110,0.2);
+      animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(76,175,110,0.2); }
+      50%       { box-shadow: 0 0 0 6px rgba(76,175,110,0.08); }
+    }
+
+    .avail-text {
+      flex: 1;
+    }
+
+    .avail-text strong {
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .avail-text span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── LOCATION CARD ── */
+    .location-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    .location-item {
+      background: var(--card);
+      padding: 1.8rem 2rem;
+    }
+
+    .location-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .location-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── SUCCESS STATE ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .form-success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-success h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      flex: 1;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-links a { color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .page { padding: 0 1.5rem 5rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 2rem 1.5rem; }
+      .location-strip { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { gap: 1.2rem; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NID</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="pengalaman.html">Pengalaman</a></li>
+
+    <li><a href="kontak.html" class="active">Kontak</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg">CONTACT</div>
+    <div class="page-hero-label">✦ Hubungi Saya</div>
+    <h1 class="page-hero-title">Kontak<br>Saya</h1>
+    <p class="page-hero-sub">
+      Ingin berkolaborasi, berdiskusi, atau sekadar menyapa? Saya selalu terbuka untuk terhubung dengan orang-orang baru.
+    </p>
+  </div>
+
+  <!-- AVAILABILITY BAND -->
+  <div class="avail-band reveal">
+    <div class="avail-dot"></div>
+    <div class="avail-text">
+      <strong>Tersedia untuk Kolaborasi</strong>
+      <span>Saat ini aktif dan terbuka untuk proyek, diskusi, atau kerja sama baru.</span>
+    </div>
+    <a href="#form-section" class="btn btn-primary">Kirim Pesan →</a>
+  </div>
+
+  <!-- CONTACT CHANNELS -->
+  <section>
+    <div class="section-label">Saluran Kontak</div>
+    <h2 class="section-title">Temukan<br>Saya Di</h2>
+
+    <div class="contact-grid">
+
+      <a class="contact-card reveal" href="mailto:inas.dzaki531@gmail.com">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-body">
+          <div class="contact-type">Email</div>
+          <div class="contact-value">inas.dzaki531@gmail.com</div>
+          <div class="contact-desc">Untuk urusan formal, kerja sama, atau pertanyaan serius — email adalah cara terbaik.</div>
+        </div>
+        <div class="contact-arrow">→</div>
+      </a>
+
+      <a class="contact-card reveal reveal-delay-1" href="https://instagram.com/" target="_blank">
+        <div class="contact-icon">📸</div>
+        <div class="contact-body">
+          <div class="contact-type">Instagram</div>
+          <div class="contact-value">@inasdzaki_</div>
+          <div class="contact-desc">Ikuti aktivitas saya di lapangan, esports, dan keseharian — semua ada di sini.</div>
+        </div>
+        <div class="contact-arrow">→</div>
+      </a>
+
+      <a class="contact-card reveal" href="https://wa.me/62895802776789" target="_blank">
+        <div class="contact-icon">💬</div>
+        <div class="contact-body">
+          <div class="contact-type">WhatsApp</div>
+          <div class="contact-value">+62895802776789</div>
+          <div class="contact-desc">Pesan singkat, koordinasi cepat, atau sekadar ngobrol santai — WhatsApp paling responsif.</div>
+        </div>
+        <div class="contact-arrow">→</div>
+      </a>
+
+      <a class="contact-card reveal reveal-delay-1" href="https://linkedin.com/" target="_blank">
+        <div class="contact-icon">💼</div>
+        <div class="contact-body">
+          <div class="contact-type">LinkedIn</div>
+          <div class="contact-value">Naufal Inas Dzaki</div>
+          <div class="contact-desc">Jaringan profesional, rekomendasi, dan portofolio lengkap tersedia di LinkedIn.</div>
+        </div>
+        <div class="contact-arrow">→</div>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT FORM -->
+  <section id="form-section">
+    <div class="section-label">Kirim Pesan</div>
+    <h2 class="section-title">Ceritakan<br>Ideamu</h2>
+
+    <div class="contact-form-wrap reveal">
+      <div class="form-header">
+        <h3>Mulai Percakapan</h3>
+        <p>Isi formulir di bawah dan saya akan merespons secepat mungkin.</p>
+      </div>
+
+      <div id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" placeholder="Nama kamu" />
+          </div>
+          <div class="form-group">
+            <label for="email">Alamat Email</label>
+            <input type="email" id="email" placeholder="email@kamu.com" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="topik">Topik</label>
+          <select id="topik">
+            <option value="" disabled selected>Pilih topik pesan</option>
+            <option value="kolaborasi">Kolaborasi Proyek</option>
+            <option value="esports">Esports & Gaming</option>
+            <option value="olahraga">Olahraga & Kompetisi</option>
+            <option value="teknologi">Teknologi & Game Dev</option>
+            <option value="lainnya">Lainnya</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pesan">Pesan</label>
+          <textarea id="pesan" placeholder="Tuliskan pesanmu di sini..."></textarea>
+        </div>
+
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="submitForm()">Kirim Pesan →</button>
+          <button class="btn btn-outline" onclick="resetForm()">Reset</button>
+        </div>
+      </div>
+
+      <div class="form-success" id="form-success">
+        <div class="form-success-icon">✦</div>
+        <h4>Pesan Terkirim!</h4>
+        <p>Terima kasih telah menghubungi saya. Saya akan segera merespons pesanmu.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- LOCATION INFO -->
+  <section>
+    <div class="section-label">Lokasi</div>
+    <h2 class="section-title">Di Mana<br>Saya Berada</h2>
+
+    <div class="location-strip reveal">
+      <div class="location-item">
+        <div class="location-label">Kota</div>
+        <div class="location-value">Jawa Tengah</div>
+      </div>
+      <div class="location-item">
+        <div class="location-label">Negara</div>
+        <div class="location-value">Indonesia</div>
+      </div>
+      <div class="location-item">
+        <div class="location-label">Zona Waktu</div>
+        <div class="location-value">WIB </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Naufal Inas Dzaki</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="pengalaman.html">Pengalaman</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 · Naufal Inas Dzaki</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Form submit (simulasi)
+  function submitForm() {
+    const nama = document.getElementById('nama').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const pesan = document.getElementById('pesan').value.trim();
+
+    if (!nama || !email || !pesan) {
+      alert('Mohon lengkapi semua field yang diperlukan.');
+      return;
+    }
+
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+
+  function resetForm() {
+    document.getElementById('nama').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('pesan').value = '';
+    document.getElementById('topik').selectedIndex = 0;
+  }
+
+  // Smooth scroll untuk anchor
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
